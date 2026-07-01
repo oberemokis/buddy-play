@@ -2,10 +2,8 @@
   "$schema": "https://opencode.ai/config.json",
   "model": "opencode/deepseek-v4-pro",
   "instructions": [".rules"],
-  "plugin": [
-    "oh-my-openagent",
-    "opencode-background-agents"
-  ],
+  "plugin": ["oh-my-openagent", "opencode-background-agents"],
+  "lsp": true,
   "agent": {
     "committer": {
       "mode": "subagent",
@@ -13,8 +11,8 @@
       "description": "Делает git-коммиты по правилам проекта. Не пушит и не редактирует файлы.",
       "tools": {
         "write": false,
-        "edit": false
-      }
-    }
-  }
+        "edit": false,
+      },
+    },
+  },
 }
