@@ -33,9 +33,9 @@ function getJson<A, I>(url: string, schema: Schema.Schema<A, I>) {
 - HTTP-клиент разрешается из контекста; приложение-потребитель предоставляет `FetchHttpClient.layer` (см. `apps/web/posts/src/composables/usePosts.ts`).
 - `BASE_URL` берётся из `@sync/config/client` (`clientConfig.apiUrl`), который читает `import.meta.env.VITE_API_URL` (валидируется через Effect Schema) с запасным localhost-значением из топологии `@sync/config`.
 
-## Расхождение с `.rules`
+## Незавершённое направление
 
-`.rules` описывает более полную структуру сущности:
+Изначально планировалась более полная структура сущности (описывалась в старой версии `.rules`; из текущей убрана):
 
 ```
 <entity>/
@@ -45,4 +45,4 @@ function getJson<A, I>(url: string, schema: Schema.Schema<A, I>) {
   index.ts    ← factory via createModule      ← actual: plain re-export
 ```
 
-`ky` объявлен в зависимостях, но не используется. `createModule` (из `@sync/utils`) тоже не используется. Либо заполните недостающие файлы и перейдите на ky, либо обновите `.rules`, когда направление устоится.
+`ky` объявлен в зависимостях, но не используется. `createModule` (из `@sync/utils`) тоже не используется. Либо заполните недостающие файлы и перейдите на ky, либо удалите мёртвую зависимость и `createModule`, когда направление устоится.
