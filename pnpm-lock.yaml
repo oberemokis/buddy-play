@@ -139,24 +139,33 @@ importers:
       '@sync/config':
         specifier: workspace:*
         version: link:../config
+      '@sync/mocks':
+        specifier: workspace:*
+        version: link:../mocks
       '@sync/schemes':
         specifier: workspace:*
         version: link:../schemes
+      '@sync/test':
+        specifier: workspace:*
+        version: link:../test
       '@sync/utils':
         specifier: workspace:*
         version: link:../utils
       effect:
         specifier: ^3.21.4
         version: 3.21.4
-      ky:
-        specifier: ^2.0.2
-        version: 2.0.2
 
   packages/config:
     dependencies:
       effect:
         specifier: ^3.21.4
         version: 3.21.4
+
+  packages/mocks:
+    dependencies:
+      '@sync/schemes':
+        specifier: workspace:*
+        version: link:../schemes
 
   packages/schemes:
     dependencies:
@@ -172,6 +181,15 @@ importers:
       vue:
         specifier: ^3.5.38
         version: 3.5.38(typescript@6.0.3)
+
+  packages/test:
+    dependencies:
+      '@effect/platform':
+        specifier: ^0.96.2
+        version: 0.96.2(effect@3.21.4)
+      effect:
+        specifier: ^3.21.4
+        version: 3.21.4
 
   packages/ui: {}
 
@@ -1026,10 +1044,6 @@ packages:
 
   js-tokens@10.0.0:
     resolution: {integrity: sha512-lM/UBzQmfJRo9ABXbPWemivdCW8V2G8FHaHdypQaIy523snUjog0W71ayWXTjiR+ixeMyVHN2XcpnTd/liPg/Q==}
-
-  ky@2.0.2:
-    resolution: {integrity: sha512-/GmXpo9F9W+f8n4Ivr2iH+7h7wL7jLbLKWkMlpflcCRb6kGjBfTlASEXaZ9qUgNTn4VgS0P2pwxxzQ4EM6Ulgg==}
-    engines: {node: '>=22'}
 
   lightningcss-android-arm64@1.32.0:
     resolution: {integrity: sha512-YK7/ClTt4kAK0vo6w3X+Pnm0D2cf2vPHbhOXdoNti1Ga0al1P4TBZhwjATvjNwLEBCnKvjJc2jQgHXH0NEwlAg==}
@@ -2298,8 +2312,6 @@ snapshots:
   js-cookie@3.0.8: {}
 
   js-tokens@10.0.0: {}
-
-  ky@2.0.2: {}
 
   lightningcss-android-arm64@1.32.0:
     optional: true

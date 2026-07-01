@@ -1,5 +1,5 @@
 {
-  "name": "@sync/api",
+  "name": "@sync/test",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -8,16 +8,8 @@
   "exports": {
     ".": "./src/index.ts"
   },
-  "scripts": {
-    "test": "vitest run"
-  },
   "dependencies": {
     "@effect/platform": "^0.96.2",
-    "@sync/config": "workspace:*",
-    "@sync/mocks": "workspace:*",
-    "@sync/schemes": "workspace:*",
-    "@sync/test": "workspace:*",
-    "@sync/utils": "workspace:*",
     "effect": "^3.21.4"
   }
 }

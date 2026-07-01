@@ -1,30 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { HttpClient, HttpClientResponse } from "@effect/platform";
-import { Effect, Exit } from "effect";
+import { Exit } from "effect";
+import { stubClient, run } from "@sync/test";
+import { posts } from "@sync/mocks";
 import { fetchPostById, fetchPosts } from "./api";
-
-const posts = [
-  { userId: 1, id: 1, title: "First", body: "Body one" },
-  { userId: 2, id: 2, title: "Second", body: "Body two" },
-];
-
-/** Создаёт HttpClient, который отвечает на каждый запрос заданным JSON-телом и статусом. */
-function stubClient(body: unknown, status = 200) {
-  return HttpClient.make((request) =>
-    Effect.succeed(
-      HttpClientResponse.fromWeb(
-        request,
-        new Response(JSON.stringify(body), {
-          status,
-          headers: { "content-type": "application/json" },
-        }),
-      ),
-    ),
-  );
-}
-
-const run = <A, E>(effect: Effect.Effect<A, E, HttpClient.HttpClient>, client: HttpClient.HttpClient) =>
-  Effect.runPromiseExit(effect.pipe(Effect.provideService(HttpClient.HttpClient, client)));
 
 describe("fetchPosts", () => {
   it("decodes an array of posts", async () => {

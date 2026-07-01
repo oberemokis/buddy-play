@@ -1,18 +1,16 @@
 # @sync/api — слой HTTP-клиента
 
-HTTP-клиент на базе Effect для микросервисов API.
+HTTP-клиент на базе `@effect/platform`.
 
 ## Раскладка сущностей
 
 ```
 src/
-  index.ts                ← re-exports from entities
+  index.ts                ← реэкспорт из всех сущностей
   <entity>/
-    api.ts                ← pure HTTP calls (HttpClient + Schema)
-    index.ts              ← re-export from api.ts
+    api.ts                ← HTTP-запросы (HttpClient + Schema)
+    index.ts              ← реэкспорт из api.ts
 ```
-
-Текущие сущности: `posts` (`fetchPosts`, `fetchPostById`).
 
 ## Паттерн HTTP
 
@@ -29,20 +27,9 @@ function getJson<A, I>(url: string, schema: Schema.Schema<A, I>) {
 }
 ```
 
-- Ответы декодируются через `Schema` — источник истины `@sync/schemes`.
-- HTTP-клиент разрешается из контекста; приложение-потребитель предоставляет `FetchHttpClient.layer` (см. `apps/web/posts/src/composables/usePosts.ts`).
-- `BASE_URL` берётся из `@sync/config/client` (`clientConfig.apiUrl`), который читает `import.meta.env.VITE_API_URL` (валидируется через Effect Schema) с запасным localhost-значением из топологии `@sync/config`.
+## Правила
 
-## Незавершённое направление
-
-Изначально планировалась более полная структура сущности (описывалась в старой версии `.rules`; из текущей убрана):
-
-```
-<entity>/
-  api.ts      ← HTTP calls (ky)               ← actual: @effect/platform, not ky
-  queries.ts  ← useQuery hooks                ← not implemented
-  keys.ts     ← typed query keys              ← not implemented
-  index.ts    ← factory via createModule      ← actual: plain re-export
-```
-
-`ky` объявлен в зависимостях, но не используется. `createModule` (из `@sync/utils`) тоже не используется. Либо заполните недостающие файлы и перейдите на ky, либо удалите мёртвую зависимость и `createModule`, когда направление устоится.
+- Ответы декодируются через `Schema` из `@sync/schemes` — единственный источник истины для моделей данных.
+- HTTP-клиент разрешается из контекста Effect. Потребитель обязан предоставить `FetchHttpClient.layer` при запуске рантайма.
+- `BASE_URL` берётся из `@sync/config/client` (`clientConfig.apiUrl`), который читает `VITE_API_URL` через Effect Schema с fallback'ом на localhost из топологии сервисов.
+- Никаких прямых вызовов `fetch` или сторонних HTTP-библиотек — только `HttpClient` из `@effect/platform`.
