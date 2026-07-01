@@ -1,0 +1,17 @@
+{
+  "name": "@sync/host",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@sync/config": "workspace:*",
+    "@sync/stores": "workspace:*",
+    "pinia": "^3.0.4",
+    "vue": "^3.5.34"
+  }
+}
