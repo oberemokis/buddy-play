@@ -1,0 +1,30 @@
+{
+  "name": "sync",
+  "private": true,
+  "packageManager": "pnpm@10.26.0",
+  "scripts": {
+    "gen:remotes": "tsx scripts/gen-remotes.ts",
+    "predev": "pnpm gen:remotes",
+    "dev": "turbo run dev",
+    "dev:web": "turbo run dev --filter './apps/web/*'",
+    "dev:api": "turbo run dev --filter './apps/api/*'",
+    "prebuild": "pnpm gen:remotes",
+    "build": "turbo run build",
+    "preview": "turbo run preview start",
+    "test": "turbo run test",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@module-federation/vite": "^1.16.8",
+    "@playwright/test": "^1.61.1",
+    "@sync/config": "workspace:*",
+    "tsx": "^4.19.2",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "@vitest/coverage-v8": "^4.1.9",
+    "turbo": "^2.5.8",
+    "typescript": "~6.0.2",
+    "vite": "^8.0.12",
+    "vitest": "^4.1.9",
+    "vue-tsc": "^3.2.8"
+  }
+}
