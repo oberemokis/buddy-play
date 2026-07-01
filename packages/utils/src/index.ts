@@ -1,1 +1,1 @@
-export { createModule, type Module } from "./module";
+// No exports yet — utils package is intentionally dependency-free
