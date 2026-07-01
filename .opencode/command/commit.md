@@ -1,10 +1,10 @@
 ---
-description: git commit и push
-model: opencode/kimi-k2.5
+description: git commit без push
+agent: committer
 subtask: true
 ---
 
-Сделай коммит и пуш.
+Сделай коммит. НЕ ПУШЬ — `git push` выполняю только я сам, никогда не запускай его.
 
 ## Префиксы коммитов
 
