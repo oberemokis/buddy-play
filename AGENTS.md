@@ -36,6 +36,7 @@ packages/
 ### Команды по пакетам
 - Typecheck бэкенда: `pnpm typecheck` (из `apps/api/posts/`, запускает `tsc --noEmit`)
 - Typecheck фронтенда: отдельного скрипта нет — `npx vue-tsc --noEmit` из директории приложения
+- Typecheck скриптов/e2e: `npx tsc -p tsconfig.json --noEmit` из корня (корневой `tsconfig.json` покрывает `scripts/`, `e2e/`, `playwright.config.ts`)
 - Сборка: `pnpm build` из директорий пакетов (api: `tsc`, web: `vite build`)
 - Тесты: `pnpm test` в пакете (Vitest) или `pnpm test` из корня (Turbo агрегирует)
 
@@ -54,4 +55,12 @@ packages/
 
 ## Конвенции
 - Правила стиля кода: `.rules` (автоподгрузка через `.opencode/opencode.jsonc` → instructions)
-- Покрывают: именование, ранний возврат, вертикальные объекты в return, алиас `@/`, категоризацию компонентов (`elements`/`blocks`/`widgets`)
+- Покрывают: именование (префиксы/суффиксы), функции, импорты (алиас `@/`), строгий TypeScript (без `any`/`!`/`as`), моделирование состояний (discriminated unions, branded-типы), null-политику, Effect-TS, Vue, Pinia, модули, комментарии, guard clauses, константы, обработку ошибок, дублирование (rule of three), тесты (AAA), git-коммиты
+- Git: коммиты только под данными пользователя — без `Co-authored-by` и другой AI-атрибуции, без `git commit --no-verify`; `git push` выполняет только пользователь
+
+## OpenCode
+- Конфиг проекта: `.opencode/opencode.jsonc` (модель, instructions, плагины `oh-my-openagent` и `opencode-background-agents`, агенты)
+- Агент `committer` (subagent, `opencode/kimi-k2.5`): делает коммиты по правилам проекта; редактирование файлов ему запрещено
+- Команды (`.opencode/command/`):
+  - `/commit` — коммит через агента `committer`, БЕЗ push; по коммиту на каждую затронутую область (префиксы `api:`, `web:`, `ai:` и т.д.)
+  - `/smell` — ревью только изменённых файлов на code smells по правилам `.rules`; отчёт без исправлений
