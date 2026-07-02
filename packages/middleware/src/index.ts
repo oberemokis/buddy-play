@@ -170,6 +170,37 @@ export class MiddlewareRunner {
 }
 
 /**
+ * Фабрика guard-функции. Декомпозирует охранную логику на две части:
+ * условие (`condition`) и цель редиректа (`redirectTo`).
+ *
+ * Если `condition` возвращает `false` — навигация перенаправляется на `redirectTo`.
+ * Если `true` — навигация продолжается.
+ *
+ * @param redirectTo — роут для редиректа (строка, объект или функция от контекста)
+ * @param condition — предикат: `true` = проходим, `false` = редиректим
+ *
+ * @example
+ * ```ts
+ * const authGuard = guard("/login", () => !isAuthenticated());
+ *
+ * middleware(router, { global: [authGuard] });
+ * ```
+ */
+export function guard(
+  redirectTo:
+    | RouteLocationRaw
+    | false
+    | ((ctx: MiddlewareContext) => RouteLocationRaw | false),
+  condition: (ctx: MiddlewareContext) => boolean,
+): Middleware {
+  return (ctx) => {
+    if (!condition(ctx)) {
+      return typeof redirectTo === "function" ? redirectTo(ctx) : redirectTo;
+    }
+  };
+}
+
+/**
  * Установить поддержку middleware на экземпляр Vue Router.
  *
  * Вызовите после создания роутера, чтобы подключить глобальные
