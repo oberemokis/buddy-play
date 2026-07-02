@@ -54,6 +54,29 @@ export type MiddlewareOptions = {
   routes?: MiddlewareOptionRoutes;
 };
 
+const noop = (): Promise<RouteLocationRaw | false | undefined> =>
+  Promise.resolve(undefined);
+
+/**
+ * Свёртка массива handler-ов в цепочку с коротким замыканием.
+ *
+ * Каждый handler вызывается последовательно. Если handler возвращает значение —
+ * цепочка прерывается и значение возвращается наружу. Если `undefined` —
+ * управление передаётся следующему handler-у.
+ */
+function chain(
+  handlers: readonly Middleware[],
+  context: MiddlewareContext,
+): Promise<RouteLocationRaw | false | undefined> {
+  return handlers.reduceRight(
+    (next, handler) => async () => {
+      const result = await handler(context);
+      return result !== undefined ? result : next();
+    },
+    noop,
+  )();
+}
+
 /**
  * Коллекция **глобальных** middleware.
  *
@@ -76,12 +99,7 @@ export class GlobalMiddlewareCollection {
   async runAll(
     context: MiddlewareContext,
   ): Promise<RouteLocationRaw | false | undefined> {
-    for (const middleware of this._middlewares) {
-      const result = await middleware(context);
-      if (result !== undefined) {
-        return result;
-      }
-    }
+    return chain(this._middlewares, context);
   }
 }
 
@@ -113,14 +131,7 @@ export class RouteMiddlewareCollection {
     route: keyof RouteNamedMap,
     context: MiddlewareContext,
   ): Promise<RouteLocationRaw | false | undefined> {
-    const routeMiddlewares = this.get(route);
-
-    for (const middleware of routeMiddlewares) {
-      const result = await middleware(context);
-      if (result !== undefined) {
-        return result;
-      }
-    }
+    return chain(this.get(route), context);
   }
 }
 
