@@ -1,4 +1,4 @@
-# Sync — Монорепозиторий
+# Buddy Play — Монорепозиторий
 
 ## Стек
 - **Фронтенд**: Vue 3 + Pinia + Module Federation (Vite)
