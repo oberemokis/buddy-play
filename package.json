@@ -12,7 +12,8 @@
     "build": "turbo run build",
     "preview": "turbo run preview start",
     "test": "turbo run test",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "typecheck": "turbo run typecheck"
   },
   "devDependencies": {
     "@module-federation/vite": "^1.16.8",
