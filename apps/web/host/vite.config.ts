@@ -1,7 +1,9 @@
-import { defineConfig, loadEnv } from "vite";
 import { fileURLToPath } from "node:url";
+import { resolve } from "node:path";
 import vue from "@vitejs/plugin-vue";
 import { federation } from "@module-federation/vite";
+import UnpluginVueRouter from "unplugin-vue-router/vite";
+import { defineConfig, loadEnv } from "vite";
 import { services, toRemotes } from "@sync/config";
 
 // Приложения используют общий .env в корне монорепо (там лежат межсервисные URL).
@@ -21,12 +23,17 @@ export default defineConfig(({ mode }) => {
   return {
     envDir,
     plugins: [
+      UnpluginVueRouter({
+        routesFolder: "src/pages",
+        dts: "src/typed-router.d.ts",
+      }),
       vue(),
       federation({
         name: "host",
         remotes,
         shared: {
           vue: { singleton: true },
+          "vue-router": { singleton: true },
           "@sync/stores": { singleton: true, requiredVersion: "*" },
           pinia: { singleton: true },
         },
@@ -40,6 +47,11 @@ export default defineConfig(({ mode }) => {
     preview: {
       port: services.host.port,
       strictPort: true,
+    },
+    resolve: {
+      alias: {
+        "@": resolve(__dirname, "src"),
+      },
     },
     build: {
       target: "esnext",

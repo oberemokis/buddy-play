@@ -1,21 +1,17 @@
 <script lang="ts" setup>
-import { defineAsyncComponent } from "vue";
-
-const PostList = defineAsyncComponent(() => import("posts/PostList"));
 </script>
 
 <template>
   <header>
     <h1>Sync</h1>
+    <nav>
+      <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/about">About</RouterLink>
+    </nav>
   </header>
 
   <main>
-    <Suspense>
-      <PostList />
-      <template #fallback>
-        <p>Loading...</p>
-      </template>
-    </Suspense>
+    <RouterView />
   </main>
 </template>
 
@@ -47,5 +43,23 @@ header {
 
 header h1 {
   font-size: 1.5rem;
+}
+
+nav {
+  display: flex;
+  gap: 16px;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+nav .router-link-active {
+  font-weight: 600;
 }
 </style>
