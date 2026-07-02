@@ -1,4 +1,4 @@
-import type { Post } from "@sync/schemes";
+import type { Post } from "@buddy-play/schemes";
 
 /** Статический набор постов для юнит-тестов. */
 export const posts: readonly Post[] = [

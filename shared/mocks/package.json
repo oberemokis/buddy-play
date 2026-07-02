@@ -1,5 +1,5 @@
 {
-  "name": "@sync/mocks",
+  "name": "@buddy-play/mocks",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -9,6 +9,6 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "@sync/schemes": "workspace:*"
+    "@buddy-play/schemes": "workspace:*"
   }
 }
