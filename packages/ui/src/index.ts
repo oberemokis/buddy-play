@@ -1,2 +1,1 @@
-// shared UI components go here
-export {};
+export type {};
