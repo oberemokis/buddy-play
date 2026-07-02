@@ -1,5 +1,5 @@
 {
-  "name": "@sync/host",
+  "name": "@buddy-play/host",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,9 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@sync/config": "workspace:*",
-    "@sync/middleware": "workspace:*",
-    "@sync/stores": "workspace:*",
+    "@buddy-play/config": "workspace:*",
+    "@buddy-play/middleware": "workspace:*",
+    "@buddy-play/stores": "workspace:*",
     "pinia": "^3.0.4",
     "ts-pattern": "^5.6.2",
     "unplugin-vue-router": "^0.19.2",

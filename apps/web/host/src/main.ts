@@ -1,6 +1,6 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
-import { middleware } from "@sync/middleware";
+import { middleware } from "@buddy-play/middleware";
 import { navigationLogger } from "@/middleware/logger";
 import { dashboardGuard } from "@/guard/dashboard";
 import { router } from "@/router";

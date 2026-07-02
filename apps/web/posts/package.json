@@ -1,5 +1,5 @@
 {
-  "name": "@sync/posts",
+  "name": "@buddy-play/posts",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "@effect/platform": "^0.96.2",
-    "@sync/api": "workspace:*",
-    "@sync/config": "workspace:*",
-    "@sync/schemes": "workspace:*",
-    "@sync/stores": "workspace:*",
+    "@buddy-play/api": "workspace:*",
+    "@buddy-play/config": "workspace:*",
+    "@buddy-play/schemes": "workspace:*",
+    "@buddy-play/stores": "workspace:*",
     "boneyard-js": "^1.8.1",
     "effect": "^3.21.4",
     "pinia": "^3.0.4",

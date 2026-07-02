@@ -209,7 +209,7 @@ export function guard(
  * @example
  * ```ts
  * import { createRouter } from "vue-router";
- * import { middleware } from "@sync/middleware";
+ * import { middleware } from "@buddy-play/middleware";
  *
  * const router = createRouter({ ... });
  *

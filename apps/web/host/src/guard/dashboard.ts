@@ -1,4 +1,4 @@
-import { guard } from "@sync/middleware";
+import { guard } from "@buddy-play/middleware";
 
 /**
  * Блокирует доступ к странице dashboard.

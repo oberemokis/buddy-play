@@ -1,4 +1,4 @@
-# @sync/middleware — middleware для Vue Router
+# @buddy-play/middleware — middleware для Vue Router
 
 Система middleware с двухуровневым выполнением: глобальные (на каждый переход) и per-route.
 
@@ -13,7 +13,7 @@ src/
 ## Паттерн использования
 
 ```ts
-import { middleware } from "@sync/middleware";
+import { middleware } from "@buddy-play/middleware";
 
 middleware(router, {
   global: [logger, authGuard],
@@ -33,7 +33,7 @@ middleware(router, {
 Фабрика `guard(redirectTo, condition)` декомпозирует охранную логику:
 
 ```ts
-import { guard, middleware } from "@sync/middleware";
+import { guard, middleware } from "@buddy-play/middleware";
 
 const authGuard = guard("/login", (ctx) => !isAuthenticated());
 const adminGuard = guard("/403", (ctx) => hasRole(ctx, "admin"));

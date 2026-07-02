@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { Post } from "@sync/schemes";
+import type { Post } from "@buddy-play/schemes";
 import PostCard from "@/components/elements/PostCard.vue";
 
 defineProps<{

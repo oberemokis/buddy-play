@@ -1,4 +1,4 @@
-# @sync/posts
+# @buddy-play/posts
 
 Ремоут на Module Federation. Экспортирует UI списка постов.
 
@@ -21,7 +21,7 @@
 Композабл `usePosts()` (`src/composables/usePosts.ts`):
 
 - Состояние в виде размеченного объединения: `idle | loading | loaded | error`
-- Загружает через `@sync/api` (`fetchPosts`), используя `FetchHttpClient.layer` из `@effect/platform`
+- Загружает через `@buddy-play/api` (`fetchPosts`), используя `FetchHttpClient.layer` из `@effect/platform`
 - Фильтрует по `useUiStore().selectedUserId` (или возвращает полный список при `null`)
 - Автозагрузка при инициализации композабла — ручной запуск не нужен
 

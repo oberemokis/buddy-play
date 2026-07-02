@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import Skeleton from "boneyard-js/vue";
-import type { Post } from "@sync/schemes";
+import type { Post } from "@buddy-play/schemes";
 
 defineProps<{ post: Post; loading: boolean }>();
 </script>

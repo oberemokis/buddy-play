@@ -1,4 +1,4 @@
-# @sync/host
+# @buddy-play/host
 
 Shell на Module Federation. Потребляет ремоуты, владеет Pinia и роутингом.
 
@@ -19,7 +19,7 @@ src/
 
 ## Middleware
 
-Глобальные и per-route middleware через `@sync/middleware`. Регистрируются в `main.ts`:
+Глобальные и per-route middleware через `@buddy-play/middleware`. Регистрируются в `main.ts`:
 
 ```ts
 middleware(router, { global: [navigationLogger] });
@@ -29,7 +29,7 @@ middleware(router, { global: [navigationLogger] });
 
 ## Реестр ремоутов (`vite.config.ts`)
 
-Карта `remotes` НЕ пишется руками — она выводится из манифеста ремоутов в `@sync/config` через `toRemotes()`. URL каждого ремоута можно переопределить переменной окружения `VITE_REMOTE_<NAME>_URL`.
+Карта `remotes` НЕ пишется руками — она выводится из манифеста ремоутов в `@buddy-play/config` через `toRemotes()`. URL каждого ремоута можно переопределить переменной окружения `VITE_REMOTE_<NAME>_URL`.
 
 ## Shared-синглтоны
 
@@ -37,7 +37,7 @@ middleware(router, { global: [navigationLogger] });
 shared: {
   vue:            { singleton: true },
   "vue-router":   { singleton: true },
-  "@sync/stores": { singleton: true, requiredVersion: "*" },
+  "@buddy-play/stores": { singleton: true, requiredVersion: "*" },
   pinia:          { singleton: true },
 }
 ```

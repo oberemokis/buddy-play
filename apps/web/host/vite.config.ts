@@ -4,7 +4,7 @@ import vue from "@vitejs/plugin-vue";
 import { federation } from "@module-federation/vite";
 import UnpluginVueRouter from "unplugin-vue-router/vite";
 import { defineConfig, loadEnv } from "vite";
-import { services, toRemotes } from "@sync/config";
+import { services, toRemotes } from "@buddy-play/config";
 
 // Приложения используют общий .env в корне монорепо (там лежат межсервисные URL).
 const envDir = fileURLToPath(new URL("../../../", import.meta.url));
@@ -34,7 +34,7 @@ export default defineConfig(({ mode }) => {
         shared: {
           vue: { singleton: true },
           "vue-router": { singleton: true },
-          "@sync/stores": { singleton: true, requiredVersion: "*" },
+          "@buddy-play/stores": { singleton: true, requiredVersion: "*" },
           pinia: { singleton: true },
         },
         dts: false,

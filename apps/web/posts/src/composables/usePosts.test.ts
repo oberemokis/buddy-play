@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { Effect } from "effect";
 import { createPinia, setActivePinia } from "pinia";
-import { useUiStore } from "@sync/stores";
+import { useUiStore } from "@buddy-play/stores";
 
 const posts = [
   { userId: 1, id: 1, title: "One", body: "b1" },
@@ -13,7 +13,7 @@ const posts = [
 // Holder создаётся до импортов; его effect присваивается в beforeEach.
 const fetchPostsMock = vi.hoisted(() => ({ value: undefined as unknown }));
 
-vi.mock("@sync/api", () => ({
+vi.mock("@buddy-play/api", () => ({
   get fetchPosts() {
     return fetchPostsMock.value;
   },

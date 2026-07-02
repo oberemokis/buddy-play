@@ -3,7 +3,7 @@ import { fileURLToPath } from "node:url";
 import vue from "@vitejs/plugin-vue";
 import { federation } from "@module-federation/vite";
 import { boneyardPlugin } from "boneyard-js/vite";
-import { services, toExposes } from "@sync/config";
+import { services, toExposes } from "@buddy-play/config";
 
 // Используем общий .env в корне монорепо, чтобы клиентский код подхватывал VITE_API_URL.
 const envDir = fileURLToPath(new URL("../../../", import.meta.url));
@@ -24,7 +24,7 @@ export default defineConfig({
         vue: {
           singleton: true,
         },
-        "@sync/stores": {
+        "@buddy-play/stores": {
           singleton: true,
           requiredVersion: "*",
         },

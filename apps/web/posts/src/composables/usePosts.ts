@@ -1,9 +1,9 @@
 import { computed, ref } from "vue";
 import { Effect, ManagedRuntime } from "effect";
 import { FetchHttpClient } from "@effect/platform";
-import { useUiStore } from "@sync/stores";
-import { fetchPosts } from "@sync/api";
-import type { Post } from "@sync/schemes";
+import { useUiStore } from "@buddy-play/stores";
+import { fetchPosts } from "@buddy-play/api";
+import type { Post } from "@buddy-play/schemes";
 
 type Status = "idle" | "loading" | "loaded" | "error";
 

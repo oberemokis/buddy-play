@@ -1,4 +1,4 @@
-import type { Middleware } from "@sync/middleware";
+import type { Middleware } from "@buddy-play/middleware";
 
 /**
  * Логирует каждый навигационный переход: откуда → куда.
