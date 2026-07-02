@@ -1,4 +1,6 @@
 packages:
   - "apps/api/*"
   - "apps/web/*"
+  - "libs/*"
   - "packages/*"
+  - "shared/*"

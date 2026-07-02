@@ -16,7 +16,7 @@ importers:
         version: 1.61.1
       '@sync/config':
         specifier: workspace:*
-        version: link:packages/config
+        version: link:shared/config
       '@types/node':
         specifier: ^22.19.21
         version: 22.19.21
@@ -58,7 +58,7 @@ importers:
         version: 1.19.14(hono@4.12.25)
       '@sync/schemes':
         specifier: workspace:*
-        version: link:../../../packages/schemes
+        version: link:../../../shared/schemes
       effect:
         specifier: ^3.21.4
         version: 3.21.4
@@ -80,13 +80,13 @@ importers:
     dependencies:
       '@sync/config':
         specifier: workspace:*
-        version: link:../../../packages/config
+        version: link:../../../shared/config
       '@sync/middleware':
         specifier: workspace:*
-        version: link:../../../packages/middleware
+        version: link:../../../libs/middleware
       '@sync/stores':
         specifier: workspace:*
-        version: link:../../../packages/stores
+        version: link:../../../shared/stores
       pinia:
         specifier: ^3.0.4
         version: 3.0.4(typescript@6.0.3)(vue@3.5.38(typescript@6.0.3))
@@ -110,16 +110,16 @@ importers:
         version: 0.96.2(effect@3.21.4)
       '@sync/api':
         specifier: workspace:*
-        version: link:../../../packages/api
+        version: link:../../../shared/api
       '@sync/config':
         specifier: workspace:*
-        version: link:../../../packages/config
+        version: link:../../../shared/config
       '@sync/schemes':
         specifier: workspace:*
-        version: link:../../../packages/schemes
+        version: link:../../../shared/schemes
       '@sync/stores':
         specifier: workspace:*
-        version: link:../../../packages/stores
+        version: link:../../../shared/stores
       boneyard-js:
         specifier: ^1.8.1
         version: 1.8.1(vite@8.0.16(@types/node@22.19.21)(esbuild@0.28.1)(tsx@4.22.4)(yaml@2.9.0))(vue@3.5.38(typescript@6.0.3))
@@ -146,7 +146,35 @@ importers:
         specifier: ^4.1.9
         version: 4.1.9(@types/node@22.19.21)(@vitest/coverage-v8@4.1.9)(happy-dom@20.10.6)(vite@8.0.16(@types/node@22.19.21)(esbuild@0.28.1)(tsx@4.22.4)(yaml@2.9.0))
 
-  packages/api:
+  libs/middleware:
+    dependencies:
+      ts-pattern:
+        specifier: ^5.6.2
+        version: 5.9.0
+      vue-router:
+        specifier: ^4.5.0
+        version: 4.6.4(vue@3.5.38(typescript@6.0.3))
+
+  packages/composables:
+    dependencies:
+      vue:
+        specifier: ^3.5.34
+        version: 3.5.38(typescript@6.0.3)
+
+  packages/test:
+    dependencies:
+      '@effect/platform':
+        specifier: ^0.96.2
+        version: 0.96.2(effect@3.21.4)
+      effect:
+        specifier: ^3.21.4
+        version: 3.21.4
+
+  packages/ui: {}
+
+  packages/utils: {}
+
+  shared/api:
     dependencies:
       '@effect/platform':
         specifier: ^0.96.2
@@ -162,42 +190,33 @@ importers:
         version: link:../schemes
       '@sync/test':
         specifier: workspace:*
-        version: link:../test
+        version: link:../../packages/test
       '@sync/utils':
         specifier: workspace:*
-        version: link:../utils
+        version: link:../../packages/utils
       effect:
         specifier: ^3.21.4
         version: 3.21.4
 
-  packages/config:
+  shared/config:
     dependencies:
       effect:
         specifier: ^3.21.4
         version: 3.21.4
 
-  packages/middleware:
-    dependencies:
-      ts-pattern:
-        specifier: ^5.6.2
-        version: 5.9.0
-      vue-router:
-        specifier: ^4.5.0
-        version: 4.6.4(vue@3.5.38(typescript@6.0.3))
-
-  packages/mocks:
+  shared/mocks:
     dependencies:
       '@sync/schemes':
         specifier: workspace:*
         version: link:../schemes
 
-  packages/schemes:
+  shared/schemes:
     dependencies:
       effect:
         specifier: ^3.21.4
         version: 3.21.4
 
-  packages/stores:
+  shared/stores:
     devDependencies:
       pinia:
         specifier: ^3.0.4
@@ -205,19 +224,6 @@ importers:
       vue:
         specifier: ^3.5.38
         version: 3.5.38(typescript@6.0.3)
-
-  packages/test:
-    dependencies:
-      '@effect/platform':
-        specifier: ^0.96.2
-        version: 0.96.2(effect@3.21.4)
-      effect:
-        specifier: ^3.21.4
-        version: 3.21.4
-
-  packages/ui: {}
-
-  packages/utils: {}
 
 packages:
 

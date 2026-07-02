@@ -13,13 +13,19 @@ apps/
   web/
     host/               ← @sync/host (Vite-хост, 5173)      → apps/web/AGENTS.md
     posts/              ← @sync/posts (Vite-ремоут, 5001)
-packages/
+libs/                   ← переиспользуемые библиотеки
+  middleware/            ← @sync/middleware (middleware + guard)
+packages/               ← инфраструктурные пакеты
+  composables/          ← @sync/composables (Vue-композаблы)
+  test/                 ← @sync/test (утилиты для тестов)
+  ui/                   ← @sync/ui (UI-кит — пока пустой)
+  utils/                ← @sync/utils (хелперы, без зависимостей)
+shared/                 ← доменные пакеты (общие данные)
   api/                  ← @sync/api (HTTP-клиент + Effect)
   config/               ← @sync/config (топология портов/URL, манифест ремоутов)
+  mocks/                ← @sync/mocks (фикстуры для тестов)
   schemes/              ← @sync/schemes (Effect Schema)
   stores/               ← @sync/stores (Pinia, синглтон для MFE)
-  ui/                   ← @sync/ui (UI-кит — пока пустой)
-  utils/                ← @sync/utils (хелпер Module, без зависимостей)
 ```
 
 У каждого сервиса свой `AGENTS.md` с локальными деталями. OpenCode автоматически подгружает их, поднимаясь от рабочей директории вверх.
@@ -46,12 +52,12 @@ packages/
 
 ## Ключевые паттерны
 - **Effect везде**: рантайм, схемы, HTTP-клиенты, слои сервисов — всё на `effect` и `@effect/platform`. Никаких «голых» промисов и try/catch.
-- **Пакеты экспортируют исходники напрямую**: все `packages/*` указывают `main`/`types`/`exports` на `./src/index.ts`. Без шага сборки — Vite/tsx резолвят на лету.
+- **Пакеты экспортируют исходники напрямую**: все пакеты (`packages/*`, `libs/*`, `shared/*`) указывают `main`/`types`/`exports` на `./src/index.ts`. Без шага сборки — Vite/tsx резолвят на лету.
 
 Подробные паттерны лежат рядом с кодом:
 - Паттерн Effect-слоёв бэкенда → `apps/api/AGENTS.md`
 - Настройка Module Federation → `apps/web/AGENTS.md`
-- Раскладка сущностей в пакете → `packages/api/AGENTS.md`
+- Раскладка сущностей в пакете → `shared/api/AGENTS.md`
 
 ## Конвенции
 - Правила стиля кода: `.rules` (автоподгрузка через `.opencode/opencode.jsonc` → instructions)
