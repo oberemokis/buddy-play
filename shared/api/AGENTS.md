@@ -1,4 +1,4 @@
-# @sync/api — слой HTTP-клиента
+# @buddy-play/api — слой HTTP-клиента
 
 HTTP-клиент на базе `@effect/platform`.
 
@@ -29,7 +29,7 @@ function getJson<A, I>(url: string, schema: Schema.Schema<A, I>) {
 
 ## Правила
 
-- Ответы декодируются через `Schema` из `@sync/schemes` — единственный источник истины для моделей данных.
+- Ответы декодируются через `Schema` из `@buddy-play/schemes` — единственный источник истины для моделей данных.
 - HTTP-клиент разрешается из контекста Effect. Потребитель обязан предоставить `FetchHttpClient.layer` при запуске рантайма.
-- `BASE_URL` берётся из `@sync/config/client` (`clientConfig.apiUrl`), который читает `VITE_API_URL` через Effect Schema с fallback'ом на localhost из топологии сервисов.
+- `BASE_URL` берётся из `@buddy-play/config/client` (`clientConfig.apiUrl`), который читает `VITE_API_URL` через Effect Schema с fallback'ом на localhost из топологии сервисов.
 - Никаких прямых вызовов `fetch` или сторонних HTTP-библиотек — только `HttpClient` из `@effect/platform`.

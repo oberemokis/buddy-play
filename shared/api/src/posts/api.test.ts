@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { Exit } from "effect";
-import { stubClient, run } from "@sync/test";
-import { posts } from "@sync/mocks";
+import { stubClient, run } from "@buddy-play/test";
+import { posts } from "@buddy-play/mocks";
 import { fetchPostById, fetchPosts } from "./api";
 
 describe("fetchPosts", () => {

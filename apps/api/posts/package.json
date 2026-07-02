@@ -1,5 +1,5 @@
 {
-  "name": "@sync/posts-api",
+  "name": "@buddy-play/posts-api",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.13.7",
-    "@sync/schemes": "workspace:*",
+    "@buddy-play/schemes": "workspace:*",
     "effect": "^3.21.4",
     "hono": "^4.6.14"
   },

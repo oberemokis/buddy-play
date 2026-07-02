@@ -1,7 +1,7 @@
 import { HttpClient, HttpClientResponse } from "@effect/platform";
 import { Effect, Schema } from "effect";
-import { Post } from "@sync/schemes";
-import { clientConfig } from "@sync/config/client";
+import { Post } from "@buddy-play/schemes";
+import { clientConfig } from "@buddy-play/config/client";
 
 const PostArray = Schema.Array(Post);
 

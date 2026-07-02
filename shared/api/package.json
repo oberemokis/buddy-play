@@ -1,5 +1,5 @@
 {
-  "name": "@sync/api",
+  "name": "@buddy-play/api",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -13,11 +13,11 @@
   },
   "dependencies": {
     "@effect/platform": "^0.96.2",
-    "@sync/config": "workspace:*",
-    "@sync/mocks": "workspace:*",
-    "@sync/schemes": "workspace:*",
-    "@sync/test": "workspace:*",
-    "@sync/utils": "workspace:*",
+    "@buddy-play/config": "workspace:*",
+    "@buddy-play/mocks": "workspace:*",
+    "@buddy-play/schemes": "workspace:*",
+    "@buddy-play/test": "workspace:*",
+    "@buddy-play/utils": "workspace:*",
     "effect": "^3.21.4"
   }
 }

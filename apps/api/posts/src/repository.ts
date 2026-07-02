@@ -1,5 +1,5 @@
 import { Effect, Option } from "effect";
-import type { Post } from "@sync/schemes";
+import type { Post } from "@buddy-play/schemes";
 
 const seed: ReadonlyArray<Post> = [
   { userId: 1, id: 1, title: "First post", body: "Hello from the Hono API." },
